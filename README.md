@@ -9,3 +9,29 @@ npm install express-session @types/express-session
 ```bash
 npm install @nestjs/jwt
 ```
+
+## Install typeorm
+```bash
+npm install --save @nestjs/typeorm typeorm mysql2
+```
+
+## Config env
+### Install dotenv
+```bash
+npm install dotenv --save-dev
+```
+
+### Install @nestjs/config
+```bash
+npm install @nestjs/config
+```
+
+## Generate resource User
+```bash
+nest g resource user
+```
+
+## Add JWT Guard
+```bash
+nest g guard login --no-spec --flat
+```

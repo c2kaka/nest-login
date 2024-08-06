@@ -6,10 +6,12 @@ import {
   Res,
   Session,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
+import { LoginGuard } from './login.guard';
 
 @Controller()
 export class AppController {
@@ -19,17 +21,20 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
+  @UseGuards(LoginGuard)
   getHello(): string {
     return this.appService.getHello();
   }
 
   @Get('session')
+  @UseGuards(LoginGuard)
   getSession(@Session() session): string {
     session.views = session.views ? session.views + 1 : 1;
     return `Views: ${session.views}`;
   }
 
   @Get('jwt')
+  @UseGuards(LoginGuard)
   getJwt(
     @Headers('authorization') authorization: string,
     @Res({ passthrough: true }) response: Response,
