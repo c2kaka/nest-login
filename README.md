@@ -35,3 +35,8 @@ nest g resource user
 ```bash
 nest g guard login --no-spec --flat
 ```
+
+## Add class validator
+```bash
+npm install class-validator class-transformer
+```
